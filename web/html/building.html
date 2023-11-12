@@ -1,0 +1,139 @@
+<div class="container-fluid" style="background-image: url(/images/2994917.jpg);"> 
+
+    <div class="h-100 d-flex  justify-content-center">
+       
+        <div class="card w-75    border-0 mt-5" style="height: 80%; overflow-y:auto ;">
+            <div class="card-header border-0 text-center bg-tr">
+                <div class="card-title ">
+                    Welcome to the Skyline Building&nbsp;<a class="text-primary" ng-click=" vm.logout()">signout</a> <button class="btn btn-outline-primary float-right"  data-toggle="modal" data-target="#addbuilding" ><i class="bi bi-plus"></i> Add Room</button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4 border border-1 ng-scope pt-4 pb-4 text-center bg-secondary" ng-repeat="i in vm.data" ng-click="vm.currentBuilding=i.Id">
+                        <!-- table -->
+                        <span class="text-center text-white" role="button" ng-click="vm.getBuildingById(i.Id)" data-toggle="modal" data-target="#roombyid" >{{i.Name}}&nbsp;({{i.Owner}})</span>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addvisitor" ng-click="vm.currentBuilding=i.Id" ><i class="bi bi-plus"></i>  visitor</button>
+                    </div>
+                    <div class="col-12" ng-if="vm.data.length == 0 || vm.data == undefined || vm.data == null">
+                        No rooms added 
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<div class="modal fade" id="roombyid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form name="roombyid">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Room Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <div class="row">
+            <div class="col-12">
+              Owner: {{vm.singleBuildingDetails.Owner}}&nbsp;Name : {{vm.singleBuildingDetails.Name}}
+              {{m.singleBuildingDetails.visitors}}
+            </div>
+            <div ng-if="vm.singleBuildingDetails.visitors.length > 0" class="col-12">
+              <div class="row">
+                <div class="col-12" ng-repeat="k in vm.singleBuildingDetails.visitors">
+                   <hr>
+                  Visitor Name : {{k.Name}} <br>
+                  Date of visit : {{k.DateOfVisit| date}}
+                  <hr>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<!-- bootstrap modal !!! -->
+<div class="modal fade" id="addvisitor" tabindex="-1" role="dialog">
+    <form name="visitorform">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add building visitor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <div class="col-12">
+                <input type="text" class="form-control" ng-model="vm.visitorData.Name" placeholder="visitor name">
+              </div>
+            </div>
+            <div class="form-group">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"  data-dismiss="modal" ng-click="vm.saveVisitor()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="modal fade" id="addbuilding" tabindex="-1" role="dialog">
+    <form name="buildingForm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Room</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group row">
+
+                    <div class="col-12">
+                        <input class="form-control" placeholder="Room name" ng-model="vm.buildingData.Name">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-12">
+                        <input class="form-control" placeholder="Owner name" ng-model="vm.buildingData.Owner">
+                    </div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.saveBuilding()">Save</button>
+              </div>
+            </div>
+          </div>
+    </form>
+  </div>

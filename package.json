@@ -1,0 +1,31 @@
+{
+  "name": "soc-assignment",
+  "version": "1.0.0",
+  "description": "Software Oriented Computing Assignment I",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon --ext *"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.1.0",
+    "angular": "^1.8.2",
+    "angular-ui-router": "^0.2.18",
+    "angularfire": "^2.3.0",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^4.6.2",
+    "bootstrap-icons": "^1.11.1",
+    "connect-livereload": "^0.6.1",
+    "express": "^4.18.2",
+    "firebase": "^3.9.0",
+    "jquery": "^3.7.1",
+    "livereload": "^0.9.3",
+    "mysql2": "^3.6.3",
+    "nodemon": "^3.0.1",
+    "oclazyload": "^1.1.0",
+    "sequelize": "^6.34.0"
+  }
+}

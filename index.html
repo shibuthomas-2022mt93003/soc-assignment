@@ -1,0 +1,55 @@
+<html lang="en" ng-app="VisitorApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+
+    <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="angular/angular.js"></script>
+    <script type="text/javascript" src="oclazyload/dist/ocLazyLoad.js"></script>
+    <script type="text/javascript" src="angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script type="text/javascript" src="init.js"></script>
+    <script type="text/javascript" src="firebase/firebase.js"></script>
+    <script type="text/javascript" src="angularfire/dist/angularfire.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDeROeXS_5bgRL3GIeptyFrg5vpVdjB6IQ",
+        authDomain: "visitor-application.firebaseapp.com",
+        projectId: "visitor-application",
+        storageBucket: "visitor-application.appspot.com",
+        messagingSenderId: "323993754863",
+        appId: "1:323993754863:web:9531a3785520e50c090f1a",
+        measurementId: "G-PDCPH9JTT3"
+    };
+     
+        firebase.initializeApp(firebaseConfig);
+        //auth = firebase.auth(); //the firebase auth namespace
+        var provider = new firebase.auth.GoogleAuthProvider();
+          provider.addScope("https://www.googleapis.com/auth/plus.login");
+
+            provider.setCustomParameters({
+            prompt: 'select_account'
+})
+        // provider.addScope('email');
+        // provider.addScope('profile');
+        
+
+
+      </script>
+</head>
+
+<body >
+
+  
+<div class="h-100">
+    <div ui-view></div>
+</div>
+
+
+    
+</body>
+</html>
