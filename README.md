@@ -2,4 +2,4 @@
 
 run "npm run watch" run the project
 
-then open http:localhost:8080 
+then open http://localhost:8080/
